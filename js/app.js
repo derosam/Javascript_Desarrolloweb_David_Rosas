@@ -13,9 +13,30 @@ var calculadora = ( function(){
     var ultimoP;
     var control;
     
+    function boton(tag) {
+        // Code for Safari
+    document.getElementById(tag).style.WebkitTransform = "scale(0.90,0.90)"; 
+    // Code for IE9
+    document.getElementById(tag).style.msTransform = "scale(0.90,0.90)"; 
+    // Standard syntax
+    document.getElementById(tag).style.transform = "scale(0.90,0.90)"; 
+    
+        
+        setTimeout(function(){
+        // Code for Safari
+    document.getElementById(tag).style.WebkitTransform = "scale(1,1)"; 
+    // Code for IE9
+    document.getElementById(tag).style.msTransform = "scale(1,1)"; 
+    // Standard syntax
+    document.getElementById(tag).style.transform = "scale(1,1)"; 
+    }, 100);
+        
+}
+    
     function ingreso(tag){
         switch(tag) {
     case "1":
+        boton(tag);        
         if(control==true){control=false;numero="";}         
         if(numero.length<8){
         numero+=tag;        
@@ -23,6 +44,7 @@ var calculadora = ( function(){
         }        
         break;
     case "2":
+        boton(tag);        
         if(control==true){control=false;numero="";}        
         if(numero.length<8){
         numero+=tag;        
@@ -30,6 +52,7 @@ var calculadora = ( function(){
         }
         break;
     case "3":
+                boton(tag);
          if(control==true){control=false;numero="";}       
         if(numero.length<8){
         numero+=tag;        
@@ -37,6 +60,7 @@ var calculadora = ( function(){
         }
         break;
     case "4":
+                boton(tag);
         if(control==true){control=false;numero="";}        
         if(numero.length<8){
         numero+=tag;        
@@ -44,6 +68,7 @@ var calculadora = ( function(){
         }
         break;
     case "5":
+                boton(tag);
         if(control==true){control=false;numero="";}        
         if(numero.length<8){
         numero+=tag;        
@@ -51,6 +76,7 @@ var calculadora = ( function(){
         }
         break;
     case "6":
+                boton(tag);
         if(control==true){control=false;numero="";}        
         if(numero.length<8){
         numero+=tag;        
@@ -58,6 +84,7 @@ var calculadora = ( function(){
         }
         break;
     case "7":
+                boton(tag);
         if(control==true){control=false;numero="";}        
         if(numero.length<8){
         numero+=tag;        
@@ -65,6 +92,7 @@ var calculadora = ( function(){
         }
         break;
     case "8":
+                boton(tag);
         if(control==true){control=false;numero="";}        
         if(numero.length<8){
         numero+=tag;        
@@ -72,6 +100,7 @@ var calculadora = ( function(){
         }
         break;
     case "9":
+                boton(tag);
         if(control==true){control=false;numero="";}        
         if(numero.length<8){
         numero+=tag;        
@@ -79,6 +108,7 @@ var calculadora = ( function(){
         }
         break;
     case "0":
+                boton(tag);
         if(control==true){control=false;numero="";}
         if(numero.length<8){
             if(numero!=""){    
@@ -91,6 +121,7 @@ var calculadora = ( function(){
         }
         break;            
     case "punto": 
+                boton(tag);
         if(control==true){control=false;numero="";}        
         if(numero.length<7){
         if(numero==""){
@@ -106,6 +137,7 @@ var calculadora = ( function(){
         }
         break;
     case "signo":
+                boton(tag);
         if(control==false){       
         if(numero.charAt(0)=="-"){
             numero=numero.slice(1);
@@ -118,6 +150,7 @@ var calculadora = ( function(){
         break;
                 
         case "on":
+                boton(tag);
         operandos=[];
         operadores=[];        
         numero="";        
@@ -125,6 +158,7 @@ var calculadora = ( function(){
         break; 
         
         case "mas":
+                boton(tag);
         if(numero!="" || numero=="0"){
         operandos.push(numero);
         operadores.push("+");        
@@ -134,6 +168,7 @@ var calculadora = ( function(){
         break;
                 
         case "menos":
+                boton(tag);
         if(numero!="" || numero=="0"){
         operandos.push(numero);
         operadores.push("-");        
@@ -143,6 +178,7 @@ var calculadora = ( function(){
         break;
                 
         case "por":
+                boton(tag);
         if(numero!="" || numero=="0"){
         operandos.push(numero);
         operadores.push("*");        
@@ -152,6 +188,7 @@ var calculadora = ( function(){
         break;
                 
         case "dividido":
+                boton(tag);
         if(numero!="" || numero=="0"){
         operandos.push(numero);
         operadores.push("/");        
@@ -160,14 +197,12 @@ var calculadora = ( function(){
                 }
         break;
                 
-        /*case "raiz": 
-        operandos.push(numero);
-        operadores.push("+");
-        numero="";        
-        //document.getElementById("display").innerHTML = "";   
-        break;*/        
+        case "raiz": 
+        boton(tag);  
+        break;       
                 
-        case "igual":
+        case "igual":                     
+                boton(tag);
                 if(numero!="" && operandos.length>0){
         operandos.push(numero);
         operadores.push("");
@@ -205,19 +240,15 @@ var calculadora = ( function(){
         }
         break;    
                          
-}console.log(operandos+" --> "+numero);
+}
     }
-
-    
+  
   return {
 elemento: function (e){
 if (e.target)
   	  tag = e.target.getAttribute('ID');
       ingreso(tag);
-}       
-      
-
-  
+}        
   }
 })();
 
